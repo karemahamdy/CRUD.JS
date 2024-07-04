@@ -19,19 +19,25 @@ let productContainer = [];
 
 // start add product logic 
 function addProduct (){
-  const product = {
-    name:productNameInput.value,
-    category:productCategoryInput.value,
-    price:productPriceInput.value,
-    discount:productDiscountInput.value,
-    quantity:productQuantityInput.value,
-    description:productDescriptionInput.value,
+  if( checkProductName()){
+    const product = {
+        name:productNameInput.value,
+        category:productCategoryInput.value,
+        price:productPriceInput.value,
+        discount:productDiscountInput.value,
+        quantity:productQuantityInput.value,
+        description:productDescriptionInput.value,
+    }
+    productContainer.push(product)
+    console.log(productContainer);
+    localStorage.setItem('products' ,JSON.stringify(productContainer))
+    dispalyProduct();
+    clearInputs();
 }
-productContainer.push(product)
-console.log(productContainer);
-localStorage.setItem('products' ,JSON.stringify(productContainer))
-dispalyProduct()
-clearInputs ()
+else {
+  
+    productNameInput.placeholder = `Ivalid...`
+}
 }
 
 addProductBtn.addEventListener('click' ,addProduct);
@@ -108,3 +114,18 @@ function updateProduct (){
   clearInputs();
 }
 updateProductBtn.addEventListener('click' ,updateProduct);
+
+
+// Regex 
+function checkProductName(){
+  let regx = /^\w{4,15}$/
+  if(regx.test(productNameInput.value)){
+      return true
+  }
+  else {
+      return false
+  }
+}
+
+
+
