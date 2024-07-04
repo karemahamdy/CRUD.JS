@@ -23,6 +23,7 @@ function addProduct (){
 }
 productContainer.push(product)
 console.log(productContainer);
+localStorage.setItem('products' ,JSON.stringify(productContainer))
 dispalyProduct()
 clearInputs ()
 }
@@ -60,3 +61,15 @@ function clearInputs (){
 }
 
   // local storage 
+  if(localStorage.getItem('products')){
+    productContainer = JSON.parse(localStorage.getItem('products'))
+    dispalyProduct()
+}
+
+// delete element
+function deleteProduct (productIndex){
+  // console.log(`Delete ${productIndex}`);
+  productContainer.splice(productIndex,1);
+  localStorage.setItem('products' ,JSON.stringify(productContainer));
+  dispalyProduct();
+}
