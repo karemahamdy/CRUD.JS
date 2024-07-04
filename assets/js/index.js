@@ -10,6 +10,12 @@ const updateProductBtn = document.getElementById('updateProductBtn');
 const searchInput =document.getElementById('searchInput')
 let productContainer = [];
 
+  // local storage 
+  if(localStorage.getItem('products')){
+    productContainer = JSON.parse(localStorage.getItem('products'))
+    dispalyProduct()
+}
+
 
 // start add product logic 
 function addProduct (){
@@ -60,11 +66,7 @@ function clearInputs (){
   productDescriptionInput.value = ''
 }
 
-  // local storage 
-  if(localStorage.getItem('products')){
-    productContainer = JSON.parse(localStorage.getItem('products'))
-    dispalyProduct()
-}
+
 
 // delete element
 function deleteProduct (productIndex){
@@ -73,3 +75,22 @@ function deleteProduct (productIndex){
   localStorage.setItem('products' ,JSON.stringify(productContainer));
   dispalyProduct();
 }
+
+
+// update Product 
+
+function updateProduct (){
+  console.log(x);
+  productContainer[x].name = productNameInput.value
+  productContainer[x].category =productCategoryInput.value
+  productContainer[x].price = productPriceInput.value
+  productContainer[x].discount = productDiscountInput.value
+  productContainer[x].quantity = productQuantityInput.value
+  productContainer[x].description = productDescriptionInput.value
+  addProductBtn.classList.remove('d-none')
+  updateProductBtn.classList.add('d-none')
+  localStorage.setItem('products' ,JSON.stringify(productContainer));
+  dispalyProduct();
+  clearInputs();
+}
+updateProductBtn.addEventListener('click' ,updateProduct);
