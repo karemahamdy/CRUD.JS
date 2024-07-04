@@ -24,6 +24,7 @@ function addProduct (){
 productContainer.push(product)
 console.log(productContainer);
 dispalyProduct()
+clearInputs ()
 }
 
 addProductBtn.addEventListener('click' ,addProduct);
@@ -48,4 +49,14 @@ function dispalyProduct (){
       document.getElementById('showData').innerHTML = content ;
   }
 
-  dispalyProduct()
+  // clear Inputs 
+function clearInputs (){
+  productNameInput.value = '';
+  productCategoryInput.value = '';
+  productPriceInput.value = ''
+  productDiscountInput.value = ''
+  productQuantityInput.value = ''
+  productDescriptionInput.value = ''
+}
+
+  // local storage 
