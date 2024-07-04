@@ -36,7 +36,7 @@ clearInputs ()
 
 addProductBtn.addEventListener('click' ,addProduct);
 
-// add product in table
+// dispalyProduct
 function dispalyProduct (){
   let content = ``;
       for (let i = 0; i < productContainer.length; i++) {
@@ -76,6 +76,20 @@ function deleteProduct (productIndex){
   dispalyProduct();
 }
 
+// set Data 
+let x  =0;
+function setForm (productIndex){
+    x =productIndex
+    // console.log('Set From' + productIndex);
+    productNameInput.value = productContainer[productIndex].name;
+    productCategoryInput.value =productContainer[productIndex].category;
+    productPriceInput.value = productContainer[productIndex].price;
+    productDiscountInput.value = productContainer[productIndex].discount;
+    productQuantityInput.value = productContainer[productIndex].quantity;
+    productDescriptionInput.value = productContainer[productIndex].description;
+    addProductBtn.classList.add('d-none')
+    updateProductBtn.classList.remove('d-none')
+}
 
 // update Product 
 
